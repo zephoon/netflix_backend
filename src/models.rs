@@ -31,8 +31,8 @@ pub struct Video {
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct VideoResponse {
-    pub id: String,
-    pub results: Vec<Movie>,
+    pub id: i32,
+    pub results: Vec<Video>,
 }
 
 #[derive(Deserialize)]

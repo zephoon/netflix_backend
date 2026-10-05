@@ -9,7 +9,7 @@ mod models;
 mod state;
 
 use state::AppState;
-use handlers::{root, get_video_movies, get_threading_movies, search_content};
+use handlers::{root, get_movie_videos, get_trending_movies, search_content};
 
 #[tokio::main]
 async fn main() {
@@ -20,8 +20,8 @@ async fn main() {
     let app = Router::new()
         .route("/", get(root))
         .route("/api/search", get(search_content))
-        .route("/api/threading", get(get_threading_movies))
-        .route("/api/movie/{id}/videos", get(get_video_movies))
+        .route("/api/trending", get(get_trending_movies))
+        .route("/api/movie/{id}/videos", get(get_movie_videos))
         .nest_service("/stream", ServeDir::new("assets"))
         .layer(cors)
         .with_state(app_state);
